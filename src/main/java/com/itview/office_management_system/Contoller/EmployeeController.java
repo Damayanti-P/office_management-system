@@ -23,13 +23,13 @@ public class EmployeeController
 		
 	}
 	
-//	@GetMapping("/data")
-//	public ResponseEntity<String> getEmployees( )
-//	{
-//		List<Employee> emp= service.getEmployees();
-//		return new ResponseEntity<>(emp.toString(),HttpStatus.OK);
-//		
-//	}
+	@GetMapping("/data")
+	public ResponseEntity<String> getEmployees( )
+	{
+		List<Employee> emp= service.getEmployees();
+		return new ResponseEntity<>(emp.toString(),HttpStatus.OK);
+		
+	}
 	
 	@GetMapping("/dataById")
 	public ResponseEntity<String> getEmployeesbyId(@Nullable @RequestParam String empId )

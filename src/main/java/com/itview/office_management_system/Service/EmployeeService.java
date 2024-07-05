@@ -36,21 +36,21 @@ public class EmployeeService {
 		}
 		return new Employee();
 	}
-//	public List<Employee> getEmployees()
-//	{
-//		
-//		List<Employee> emp=repo.findAll();
-//		List<Employee> allEmp=new ArrayList<>();
-//		for(Employee activeEmployee: emp)
-//		{
-//			Status status=activeEmployee.getStatus();
-//			if(status.getStatusId()==1)
-//			{
-//				allEmp.add(activeEmployee);
-//			}
-//		}
-//		return allEmp;
-//	}
+	public List<Employee> getEmployees()
+	{
+		
+		List<Employee> emp=repo.getEmployees();
+		List<Employee> allEmp=new ArrayList<>();
+		for(Employee activeEmployee: emp)
+		{
+			Status status=activeEmployee.getStatus();
+			if(status.getStatusId()==1)
+			{
+				allEmp.add(activeEmployee);
+			}
+		}
+		return allEmp;
+	}
 
 	public Employee getEmployeeByUsername(String username)
 	{
@@ -73,10 +73,10 @@ public class EmployeeService {
 	}
 
 	
-	public Employee updateEmployee(Employee empData,Integer empId) {
+	public void updateEmployee(Employee empData,Integer empId) {
 			Employee emp=repo.findById(empId).get();
 			empData.setEmpId(emp.getEmpId());
-		return saveEmploye(empData);
+			saveEmploye(empData);
 	}
 
 	

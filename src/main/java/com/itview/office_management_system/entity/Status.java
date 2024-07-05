@@ -9,13 +9,12 @@ import lombok.Data;
 public class Status 
 {
 	@Id
-	@GeneratedValue(strategy = GenerationType.AUTO)
 	@Column(name = "id")
 	private int statusId;
 	
-	@Column(name = "empName")
+	@Column(name = "stsName")
 	private String statusName;
 	
-	@Column(name = "status")
+	@Column(name = "stsDes")
 	private String statusDes;
 }
