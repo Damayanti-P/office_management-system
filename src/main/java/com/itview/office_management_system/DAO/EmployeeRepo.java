@@ -5,7 +5,7 @@ import org.springframework.data.jpa.repository.*;
 import org.springframework.stereotype.Repository;
 import com.itview.office_management_system.entity.Employee;
 
-@Repository
+
 public interface EmployeeRepo extends JpaRepository<Employee, Integer>{
 
 	Employee findByUsername(String username);

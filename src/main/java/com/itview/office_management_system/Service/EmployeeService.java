@@ -10,6 +10,7 @@ import com.itview.office_management_system.DAO.EmployeeRepo;
 import com.itview.office_management_system.DAO.StatusRepo;
 import com.itview.office_management_system.entity.Employee;
 import com.itview.office_management_system.entity.Status;
+import com.itview.office_management_system.utils.EncryptDecrypt;
 
 @Service
 public class EmployeeService {
@@ -23,6 +24,8 @@ public class EmployeeService {
 	StatusRepo statusrepo;
 	
 	public Employee saveEmploye(Employee empData) {
+		String encodedePass=EncryptDecrypt.encrypt(empData.getUsername(), empData.getPassword());
+		empData.setPassword(encodedePass);
 		Status status=statusrepo.findById(1).get();
 		empData.setStatus(status);
 		Employee employee=repo.save(empData);

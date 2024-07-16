@@ -15,11 +15,18 @@ public class EmployeeController
 	@Autowired
 	EmployeeService service;
 	
+	
 	@PostMapping("/employee")
-	public ResponseEntity<Integer> saveEmployee(@RequestBody Employee empData)
+	public ResponseEntity saveEmployee(@RequestBody Employee empData)
 	{
+		String username=empData.getUsername();
+		Employee emp=service.getEmployeeByUsername(username);
+		if(null==emp) {
+		
 		service.saveEmploye(empData);
 		return new ResponseEntity<>(empData.getEmpId(),HttpStatus.CREATED);
+		}
+		return new ResponseEntity<>("Username already Exists",HttpStatus.BAD_REQUEST);
 		
 	}
 	
