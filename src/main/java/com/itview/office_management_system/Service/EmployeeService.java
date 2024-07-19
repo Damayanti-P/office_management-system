@@ -61,12 +61,19 @@ public class EmployeeService {
 	{
 		
 		Employee emp=repo.findByUsername(username);
-		Status status=emp.getStatus();
+		if(emp==null) {
+			return null;
+		}
+		else{
+			Status status=emp.getStatus();
+		
+	
 		if(status.getStatusId()==1)
 		{
 		return emp;
 		}
-		return new Employee();
+		}
+		return null;
 	}
 	
 

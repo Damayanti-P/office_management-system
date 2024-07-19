@@ -17,17 +17,16 @@ public class EmployeeController
 	
 	
 	@PostMapping("/employee")
-	public ResponseEntity saveEmployee(@RequestBody Employee empData)
+	public ResponseEntity saveEmployee(@Nullable @RequestBody Employee empData)
 	{
 		String username=empData.getUsername();
 		Employee emp=service.getEmployeeByUsername(username);
-		if(null==emp) {
-		
+		if(emp==null)
+		{
 		service.saveEmploye(empData);
 		return new ResponseEntity<>(empData.getEmpId(),HttpStatus.CREATED);
 		}
-		return new ResponseEntity<>("Username already Exists",HttpStatus.BAD_REQUEST);
-		
+		return new ResponseEntity<>("Employee already exists",HttpStatus.BAD_REQUEST);
 	}
 	
 	@GetMapping("/data")

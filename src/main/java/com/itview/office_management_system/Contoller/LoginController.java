@@ -21,13 +21,13 @@ public class LoginController
 		String username=jsonCred.getString("username");
 		String password=jsonCred.getString("password");
 		
-		Employee employee=lservice.login(username,password);
-		if(null==employee)
+		String token=lservice.login(username,password);
+		if(null==token)
 		{
 			return new ResponseEntity<>("Username or password not valid",HttpStatus.BAD_REQUEST);
 			
 		}
-		return new ResponseEntity<>(employee.toString(),HttpStatus.BAD_REQUEST);
+		return new ResponseEntity<>(token.toString(),HttpStatus.BAD_REQUEST);
 		
 	}
 	
