@@ -11,7 +11,7 @@ public class LoginService {
 	
 	@Autowired
 	EmployeeService empService;
-	
+	 	
 	@Autowired
 	JWTservice jwtService;
 	
@@ -19,7 +19,8 @@ public class LoginService {
 	{
 		
 		Employee emp=empService.getEmployeeByUsername(username);
-		if(emp==null){
+		if(emp==null)
+		{
 			return  null;
 		}
 		else{
@@ -27,6 +28,7 @@ public class LoginService {
 		if(emp.getPassword().equals(encryptedPass))
 			{
 				String token=jwtService.generateToke(username,emp.getEmpId() );
+				jwtService.validateToken(token);
 				return token;
 			}
 		}

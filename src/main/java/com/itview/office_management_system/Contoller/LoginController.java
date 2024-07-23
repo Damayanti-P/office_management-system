@@ -10,11 +10,13 @@ import com.itview.office_management_system.Service.LoginService;
 import com.itview.office_management_system.entity.Employee;
 
 @RestController
+@RequestMapping("/login")
 public class LoginController
 {
 	@Autowired
 	LoginService lservice;
 	
+	@PostMapping("/employee")
 	public ResponseEntity<String> login(@RequestBody String credentials )
 	{
 		JSONObject jsonCred=new JSONObject(credentials);
@@ -27,7 +29,7 @@ public class LoginController
 			return new ResponseEntity<>("Username or password not valid",HttpStatus.BAD_REQUEST);
 			
 		}
-		return new ResponseEntity<>(token.toString(),HttpStatus.BAD_REQUEST);
+		return new ResponseEntity<>(token.toString(),HttpStatus.OK);
 		
 	}
 	
